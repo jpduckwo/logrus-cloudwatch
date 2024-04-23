@@ -13,7 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs/types"
-	uuid "github.com/satori/go.uuid"
+	uuid "github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 )
 
@@ -248,7 +248,7 @@ func newLogStreamName() (string, error) {
 	}
 
 	tm := time.Now().Format("2006-01-02-15-04-05")
-	id := uuid.NewV4()
+	id := uuid.New().String()
 
 	return fmt.Sprintf("%s_%s_%s", tm, hn, id), nil
 }
